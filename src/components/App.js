@@ -5,6 +5,7 @@ import reducer, { initialState } from '../state/reducer'
 import Context from '../Context'
 import PublishMessage from './PublishMessage'
 import MessageBoard from './MessageBoard'
+import '../pubsub'
 
 export default function App () {
   const [state, dispatch] = useReducer(reducer, initialState)
