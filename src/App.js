@@ -1,14 +1,20 @@
-import React from 'react';
+// src/App.js
 
+import React, { useReducer, useEffect } from 'react'
+import reducer, { initialState } from './state/reducer'
+import { newMessage } from './state/actions'
 
 export default function App () {
-  
-    return (
-      <div>
-        <h2>Reaction</h2>
-      </div>
-    );
-  
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    setInterval(() => dispatch(newMessage('foo')), 3000)
+  }, [])
+
+  console.log('>>>-App-state->', state)
+  return (
+    <div>
+      <h2>Reaction</h2>
+    </div>
+  )
 }
-
-
