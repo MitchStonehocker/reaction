@@ -6,6 +6,7 @@ import { newMessage } from '../state/actions'
 
 export default function PublishMessage () {
   const {
+    state: { username },
     pubsub: { publish }
   } = useAppContext()
   const [text, setText] = useState('')
@@ -14,8 +15,8 @@ export default function PublishMessage () {
     setText(event.target.value)
   }
 
-  const publishMessage = event => {
-    publish(newMessage(text))
+  const publishMessage = () => {
+    publish(newMessage({ text, username }))
     setText('')
   }
 

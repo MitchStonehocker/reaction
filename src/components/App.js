@@ -1,11 +1,13 @@
-// src/App.js
+// src/components/App.js
 
 import React, { useReducer, useEffect } from 'react'
 import reducer, { initialState } from '../state/reducer'
 import Context from '../Context'
 import PubSub from '../pubsub'
+
 import PublishMessage from './PublishMessage'
 import MessageBoard from './MessageBoard'
+import SetUsername from './SetUsername'
 
 const pubsub = new PubSub()
 
@@ -33,9 +35,11 @@ export default function App () {
   }, [])
 
   console.log('>>>-App-state->', state)
+
   return (
     <Context.Provider value={{ state, dispatch, pubsub }}>
       <h2>Reaction</h2>
+      <SetUsername />
       <hr />
       <PublishMessage />
       <hr />
